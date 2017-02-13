@@ -12,7 +12,7 @@ export const ActionTypes = {
 
 
 export const createStore = reducer => {
-
+    console.log(reducer);
     let currentReducer = reducer,
         currentState = undefined,
         currentListeners = [],
@@ -102,8 +102,7 @@ export const createStore = reducer => {
    * return something else (for example, a Promise you can await).
    */
   function dispatch(action) {
-    if (!isPlainObject(action)) throw new Error('Actions must be plain objects. Use custom middleware for async actions.');
-
+    
     if (typeof action.type === 'undefined') throw new Error('Actions may not have an undefined "type" property. Have you misspelled a constant?')
 
     if (isDispatching) throw new Error('Reducers may not dispatch actions.');

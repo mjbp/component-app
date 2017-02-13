@@ -1,18 +1,18 @@
 import { SEARCH_INPUT_CHANGED } from './constants';
-import * as Components from './store';
+import API from './api';
 
 const initialState = {
-  components : Components,
+  components : API,
   searchTerm : ''
 };
 
-export default function components(state = initialState, action) {
+export default function componentReducer(state = initialState, action) {
 
   var doFilter = (searchTerm=state.searchTerm) => {
-    var filtered = Components;//immutabilty required...
+    var filtered = API;//immutabilty required...
     if (searchTerm) {
         //proper filtering required
-      filtered = Components.filter(item => item.title.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1);
+      filtered = API.filter(item => item.title.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1);
     }
 
     return filtered;
@@ -21,7 +21,7 @@ export default function components(state = initialState, action) {
   switch (action.type) {
   case SEARCH_INPUT_CHANGED:
     return {
-      ...state,
+      //...state,
       searchTerm : action.searchTerm,
       components : doFilter(action.searchTerm)
     };

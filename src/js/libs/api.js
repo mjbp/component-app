@@ -1,4 +1,5 @@
-export default [
+export default {
+    data: [
     {
         title: 'storm-load',
         description: 'Lightweight promise-based script loader',
@@ -20,4 +21,4 @@ export default [
         version: '0.6.0'
 
     }
-];
+]};

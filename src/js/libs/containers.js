@@ -1,3 +1,3 @@
-import componentList from './components';
+import { componentList } from './components';
 
-export default App = items => componentList(items);
+export const App = (items) => componentList(items);
