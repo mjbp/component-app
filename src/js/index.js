@@ -7,6 +7,18 @@ import reducers from './libs/reducers';
 const store = createStore(reducers);
 
 const init = () => {
+
+    // fetch('https://api.npms.io/v2/search?q=stormid+component')
+    // .then(function(res) {
+    //     return res.json();
+    // })
+    // .then(function(data) {
+    //     return console.log(data.results);
+    // })
+    // .catch(function(err) {
+    //     // Error :(
+    // });
+
     renderUI()
     store.subscribe(renderList);
 };

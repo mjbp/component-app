@@ -162,11 +162,10 @@ const initialState = {
 
 function componentReducer(state = initialState, action) {
 
-  console.log(state);
   var doFilter = (searchTerm = state.searchTerm) => {
-    var filtered = __WEBPACK_IMPORTED_MODULE_1__api__["a" /* default */].data; //immutabilty required...
+    var filtered = __WEBPACK_IMPORTED_MODULE_1__api__["a" /* default */].data;
     if (searchTerm) {
-      //proper filtering required
+
       filtered = __WEBPACK_IMPORTED_MODULE_1__api__["a" /* default */].data.filter(item => item.title.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1);
     }
 
@@ -395,6 +394,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 const store = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__libs_redux__["a" /* createStore */])(__WEBPACK_IMPORTED_MODULE_4__libs_reducers__["a" /* default */]);
 
 const init = () => {
+
+    fetch('https://api.npms.io/v2/search?q=stormid+component').then(function (res) {
+        return res.json();
+    }).then(function (data) {
+        return console.log(data.results);
+    }).catch(function (err) {
+        // Error :(
+    });
+
     renderUI();
     store.subscribe(renderList);
 };
