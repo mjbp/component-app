@@ -6,3 +6,8 @@ export const componentItem = item => `<div class="card">
     <div class="card__version">${item.version}</div>
     <div class="card__tags">${item.tags.map(tag => `<div class="card__tag">${tag}</div>`).join('')}</div>
 </div>`;
+
+export const input = keyDownHandler => {
+    // return '<input type="text" onkeydown="(function(e){console.log(e.target.value); })(event)">'
+    return `<input type="text" onkeyup="${keyDownHandler}(this)">`
+};

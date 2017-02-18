@@ -1,11 +1,22 @@
 import * as actions from './libs/actions';
 import API from './libs/api';
-import { App } from './libs/containers';
+import { UI, List } from './libs/containers';
 import { createStore } from './libs/redux';
-import components from './libs/reducers';
+import reducers from './libs/reducers';
 
-const store = createStore(components);
+const store = createStore(reducers);
 
-window.addEventListener('DOMContentLoaded', () => {
-    document.getElementById('root').innerHTML = App(API.data).join('');
-});
+const init = () => {
+    renderUI()
+    store.subscribe(renderList);
+};
+
+const renderUI = () => {
+    document.querySelector('.root').innerHTML = UI(store, actions);
+    renderList();
+};
+const renderList = () => {
+    document.querySelector('.list').innerHTML = List(store);
+};
+
+window.addEventListener('DOMContentLoaded', init);

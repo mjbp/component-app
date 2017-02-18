@@ -12,7 +12,6 @@ export const ActionTypes = {
 
 
 export const createStore = reducer => {
-    console.log(reducer);
     let currentReducer = reducer,
         currentState = undefined,
         currentListeners = [],

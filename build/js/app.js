@@ -107,12 +107,13 @@ const SEARCH_INPUT_CHANGED = 'SEARCH_INPUT_CHANGED';
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__constants__ = __webpack_require__(1);
-/* unused harmony export searchTermChanged */
+/* harmony export (immutable) */ __webpack_exports__["searchTermChanged"] = searchTermChanged;
 
 
 //action creators
-function searchTermChanged(term) {
+function searchTermChanged(searchTerm) {
   return {
     type: __WEBPACK_IMPORTED_MODULE_0__constants__["a" /* SEARCH_INPUT_CHANGED */],
     searchTerm
@@ -127,8 +128,20 @@ function searchTermChanged(term) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components__ = __webpack_require__(6);
 
 
-const App = items => __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__components__["a" /* componentList */])(items);
-/* harmony export (immutable) */ __webpack_exports__["a"] = App;
+const List = store => {
+    return `${__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__components__["a" /* componentList */])(store.getState().components).join('')}`;
+};
+/* harmony export (immutable) */ __webpack_exports__["b"] = List;
+
+
+const UI = (store, actions) => {
+    window.inputHandler = e => {
+        store.dispatch(actions.searchTermChanged(e.value));
+    };
+
+    return `${__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__components__["b" /* input */])('inputHandler')}<div class="list"></div>`;
+};
+/* harmony export (immutable) */ __webpack_exports__["a"] = UI;
 
 
 /***/ }),
@@ -143,17 +156,18 @@ const App = items => __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__componen
 
 
 const initialState = {
-  components: __WEBPACK_IMPORTED_MODULE_1__api__["a" /* default */],
+  components: __WEBPACK_IMPORTED_MODULE_1__api__["a" /* default */].data,
   searchTerm: ''
 };
 
 function componentReducer(state = initialState, action) {
 
+  console.log(state);
   var doFilter = (searchTerm = state.searchTerm) => {
-    var filtered = __WEBPACK_IMPORTED_MODULE_1__api__["a" /* default */]; //immutabilty required...
+    var filtered = __WEBPACK_IMPORTED_MODULE_1__api__["a" /* default */].data; //immutabilty required...
     if (searchTerm) {
       //proper filtering required
-      filtered = __WEBPACK_IMPORTED_MODULE_1__api__["a" /* default */].filter(item => item.title.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1);
+      filtered = __WEBPACK_IMPORTED_MODULE_1__api__["a" /* default */].data.filter(item => item.title.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1);
     }
 
     return filtered;
@@ -162,7 +176,7 @@ function componentReducer(state = initialState, action) {
   switch (action.type) {
     case __WEBPACK_IMPORTED_MODULE_0__constants__["a" /* SEARCH_INPUT_CHANGED */]:
       return {
-        //...state,
+        state,
         searchTerm: action.searchTerm,
         components: doFilter(action.searchTerm)
       };
@@ -192,7 +206,6 @@ const ActionTypes = {
 
 
 const createStore = reducer => {
-    console.log(reducer);
     let currentReducer = reducer,
         currentState = undefined,
         currentListeners = [],
@@ -355,6 +368,13 @@ const componentItem = item => `<div class="card">
 /* unused harmony export componentItem */
 
 
+const input = keyDownHandler => {
+    // return '<input type="text" onkeydown="(function(e){console.log(e.target.value); })(event)">'
+    return `<input type="text" onkeyup="${keyDownHandler}(this)">`;
+};
+/* harmony export (immutable) */ __webpack_exports__["b"] = input;
+
+
 /***/ }),
 /* 7 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -374,9 +394,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 const store = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__libs_redux__["a" /* createStore */])(__WEBPACK_IMPORTED_MODULE_4__libs_reducers__["a" /* default */]);
 
-window.addEventListener('DOMContentLoaded', () => {
-    document.getElementById('root').innerHTML = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__libs_containers__["a" /* App */])(__WEBPACK_IMPORTED_MODULE_1__libs_api__["a" /* default */].data).join('');
-});
+const init = () => {
+    renderUI();
+    store.subscribe(renderList);
+};
+
+const renderUI = () => {
+    document.querySelector('.root').innerHTML = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__libs_containers__["a" /* UI */])(store, __WEBPACK_IMPORTED_MODULE_0__libs_actions__);
+    renderList();
+};
+const renderList = () => {
+    document.querySelector('.list').innerHTML = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__libs_containers__["b" /* List */])(store);
+};
+
+window.addEventListener('DOMContentLoaded', init);
 
 /***/ })
 /******/ ]);
