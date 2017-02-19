@@ -1,0 +1,16 @@
+input {
+    border:0 none;
+    background:rgba(255, 255, 255, .1);
+    border-bottom: 1px solid rgba(255, 255, 255, .1);
+    margin-left:48px;
+    flex-grow: 1;
+    padding:4px 8px;
+    font-size:1rem;
+    color:#fff;
+    max-width:400px;
+    transition: border-color 120ms ease;
+}
+input:focus {
+    outline: none;
+    border-bottom-color:rgba(255,255,255,.5);
+}

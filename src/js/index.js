@@ -1,34 +1,26 @@
-import * as actions from './libs/actions';
-import API from './libs/api';
-import { UI, List } from './libs/containers';
-import { createStore } from './libs/redux';
-import reducers from './libs/reducers';
+import * as actions from './actions';
+import API from './api';
+import { HeaderContainer } from './containers/header-container';
+import { ListContainer } from './containers/list-container';
+import { createStore } from './redux/createStore';
+import reducers from './reducers';
+
+import styles from '../css/base.css'
 
 const store = createStore(reducers);
 
 const init = () => {
-
-    // fetch('https://api.npms.io/v2/search?q=stormid+component')
-    // .then(function(res) {
-    //     return res.json();
-    // })
-    // .then(function(data) {
-    //     return console.log(data.results);
-    // })
-    // .catch(function(err) {
-    //     // Error :(
-    // });
-
-    renderUI()
+    renderHeader();
     store.subscribe(renderList);
+    API(store, actions);
 };
 
-const renderUI = () => {
-    document.querySelector('.root').innerHTML = UI(store, actions);
-    renderList();
+const renderHeader = () => {
+    document.querySelector('.root').innerHTML = HeaderContainer(store, actions);
 };
+
 const renderList = () => {
-    document.querySelector('.list').innerHTML = List(store);
+    document.querySelector('.list').innerHTML = ListContainer(store);
 };
 
 window.addEventListener('DOMContentLoaded', init);

@@ -1,0 +1,11 @@
+header {
+    background:rgba(22,22,22, .95);
+    display: flex;
+    padding:24px;
+    position: fixed;
+    top:0;
+    left:0;
+    right:0;
+    will-change: transform;
+    justify-content: space-between; 
+}

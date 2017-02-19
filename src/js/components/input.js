@@ -1,0 +1,1 @@
+export const Input = keyDownHandler => `<input type="text" onkeyup="${keyDownHandler}(this)">`;
