@@ -1,4 +1,4 @@
-header {
+.header {
     background:rgba(22,22,22, .95);
     display: flex;
     padding:24px;
@@ -8,4 +8,13 @@ header {
     right:0;
     will-change: transform;
     justify-content: space-between; 
+}
+.header__icon {
+    position: fixed;
+    right:30px;
+    top:32px;
+    opacity:.4;
+}
+input:focus ~ .header__icon {
+    opacity:.8;
 }

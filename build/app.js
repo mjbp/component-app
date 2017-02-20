@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 22);
+/******/ 	return __webpack_require__(__webpack_require__.s = 24);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -460,20 +460,14 @@ exports.default = function (store, actions) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.HeaderContainer = undefined;
+exports.BlankContainer = undefined;
 
-var _logo = __webpack_require__(13);
+var _blank = __webpack_require__(11);
 
-var _inputContainer = __webpack_require__(14);
-
-var _header = __webpack_require__(20);
-
-var _header2 = _interopRequireDefault(_header);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var HeaderContainer = exports.HeaderContainer = function HeaderContainer(store, actions) {
-  return '<header>' + (0, _logo.Logo)() + (0, _inputContainer.InputContainer)(store, actions) + '</header><div class="list"></div>';
+var BlankContainer = exports.BlankContainer = function BlankContainer() {
+  return [0, 0, 0, 0].map(function () {
+    return '<div class="card">' + (0, _blank.Blank)() + '</div>';
+  }).join('');
 };
 
 /***/ }),
@@ -486,22 +480,48 @@ var HeaderContainer = exports.HeaderContainer = function HeaderContainer(store, 
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+exports.HeaderContainer = undefined;
+
+var _logo = __webpack_require__(15);
+
+var _inputContainer = __webpack_require__(16);
+
+var _header = __webpack_require__(22);
+
+var _header2 = _interopRequireDefault(_header);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var HeaderContainer = exports.HeaderContainer = function HeaderContainer(store, actions) {
+    return '<header class="header">\n    ' + (0, _logo.Logo)() + (0, _inputContainer.InputContainer)(store, actions) + '\n    <svg class="header__icon" fill="#FFFFFF" height="18" viewBox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg">\n        <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>\n        <path d="M0 0h24v24H0z" fill="none"/>\n    </svg>\n</header>\n<div class="list"></div>';
+};
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 exports.ListContainer = undefined;
 
-var _list = __webpack_require__(12);
+var _list = __webpack_require__(14);
 
-var _card = __webpack_require__(19);
+var _card = __webpack_require__(21);
 
 var _card2 = _interopRequireDefault(_card);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var ListContainer = exports.ListContainer = function ListContainer(store) {
-    return '' + (0, _list.List)(store.getState().data).join('');
+  return '' + (0, _list.List)(store.getState().data).join('');
 };
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -536,7 +556,9 @@ function componentReducer() {
 
     if (searchTerm && searchTerm.trim().length) {
       filtered = state.immutableData.length ? state.immutableData.filter(function (item) {
-        return item.package.name.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1;
+        return item.package.name.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1 || item.package.description.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1 || item.package.keywords.filter(function (keyword) {
+          return keyword.toLowerCase() === searchTerm.toLowerCase();
+        }).length;
       }) : [];
     }
 
@@ -569,7 +591,7 @@ function componentReducer() {
 }
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -662,13 +684,13 @@ var createStore = exports.createStore = function createStore(reducer) {
 };
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(15);
+var content = __webpack_require__(17);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // add the styles to the DOM
 var update = __webpack_require__(1)(content, {});
@@ -688,7 +710,21 @@ if(false) {
 }
 
 /***/ }),
-/* 10 */
+/* 11 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+var Blank = exports.Blank = function Blank() {
+    return "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 565.8 126.7\">\n    <g>\n        <rect fill=\"#EDEDEE\" width=\"241.8\" height=\"20.2\"/>\n        <rect y=\"30.7\" fill=\"#EDEDEE\" width=\"483.6\" height=\"14.3\"/>\n        <rect y=\"50.7\" fill=\"#EDEDEE\" width=\"206.5\" height=\"14.3\"/>\n        <rect y=\"73.9\" fill=\"#EDEDEE\"\" width=\"29.2\" height=\"11\"/>\n        <rect y=\"91.9\"  fill=\"#EDEDEE\" width=\"152.1\" height=\"11\"/>\n        <rect x=\"545.7\" y=\"106.6\" fill=\"#EDEDEE\" width=\"20.1\" height=\"20.1\"/>\n        <rect x=\"493.2\" y=\"110.8\" fill=\"#EDEDEE\" width=\"41.8\" height=\"13.9\"/>\n    </g>\n</svg>";
+};
+
+/***/ }),
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -698,15 +734,15 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 var Card = exports.Card = function Card(item) {
-    return '<div class="card">\n    <h1 class="card__title">' + item.package.name + '</h1>\n    <div class="card__description">' + item.package.description + '</div>\n    <div class="card__version">' + item.package.version + '</div>\n    <div class="card__tags">' + item.package.keywords.filter(function (tag) {
+    return '<div class="card">\n    <h1 class="card__title"><a class="card__title-link" href="https://mjbp.github.io/' + item.package.name + '">' + item.package.name + '</a></h1>\n    <div class="card__description">' + item.package.description + '</div>\n    <div class="card__version">' + item.package.version + '</div>\n    ' + (item.package.keywords.length ? '<div class="card__tags">\n        <svg height="16" viewBox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg">\n            <path d="M0 0h24v24H0z" fill="none"/>\n            <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16zM16 17H5V7h11l3.55 5L16 17z"/>\n        </svg>\n        ' + item.package.keywords.filter(function (tag) {
         return tag !== 'component' && tag !== 'stormid';
     }).map(function (tag) {
         return '<div class="card__tag">' + tag + '</div>';
-    }).join('') + '</div>\n    <div class="card__links">\n        <a class="card__link" href="' + item.package.links.npm + '">\n            <svg width="54" height="21" viewBox="0 0 18 7">\n                <path fill="#CB3837" d="M0,0h18v6H9v1H5V6H0V0z M1,5h2V2h1v3h1V1H1V5z M6,1v5h2V5h2V1H6z M8,2h1v2H8V2z M11,1v4h2V2h1v3h1V2h1v3h1V1H11z"/>\n                <polygon fill="#FFFFFF" points="1,5 3,5 3,2 4,2 4,5 5,5 5,1 1,1 "/>\n                <path fill="#FFFFFF" d="M6,1v5h2V5h2V1H6z M9,4H8V2h1V4z"/>\n                <polygon fill="#FFFFFF" points="11,1 11,5 13,5 13,2 14,2 14,5 15,5 15,2 16,2 16,5 17,5 17,1 "/>\n            </svg>\n        </a>\n        <a class="card__link" href="' + item.package.links.repository + '">Github</a>\n    </div>\n</div>';
+    }).join(' ') + '\n     </div>' : '') + '\n    <div class="card__links">\n        <a class="card__link" href="' + item.package.links.npm + '">\n            <svg width="36" height="14" viewBox="0 0 18 7">\n                <path d="M0,0h18v6H9v1H5V6H0V0z M1,5h2V2h1v3h1V1H1V5z M6,1v5h2V5h2V1H6z M8,2h1v2H8V2z M11,1v4h2V2h1v3h1V2h1v3h1V1H11z"/>\n                <polygon fill="#FFFFFF" points="1,5 3,5 3,2 4,2 4,5 5,5 5,1 1,1 "/>\n                <path fill="#FFFFFF" d="M6,1v5h2V5h2V1H6z M9,4H8V2h1V4z"/>\n                <polygon fill="#FFFFFF" points="11,1 11,5 13,5 13,2 14,2 14,5 15,5 15,2 16,2 16,5 17,5 17,1 "/>\n            </svg>\n        </a>\n        <a class="card__link" href="' + item.package.links.repository + '">\n            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32.58 31.77" width="20" height="20">\n                <path fill-rule="evenodd" clip-rule="evenodd" d="M16.29,0C7.29,0,0,7.29,0,16.29c0,7.2,4.67,13.3,11.14,15.46\n                    c0.81,0.15,1.11-0.35,1.11-0.79c0-0.39-0.01-1.41-0.02-2.77c-4.53,0.98-5.49-2.18-5.49-2.18C6,24.13,4.93,23.62,4.93,23.62\n                    c-1.48-1.01,0.11-0.99,0.11-0.99c1.63,0.12,2.5,1.68,2.5,1.68c1.45,2.49,3.81,1.77,4.74,1.35c0.15-1.05,0.57-1.77,1.03-2.18\n                    C9.7,23.08,5.9,21.68,5.9,15.44c0-1.78,0.63-3.23,1.68-4.37C7.41,10.65,6.85,9,7.73,6.76c0,0,1.37-0.44,4.48,1.67\n                    c1.3-0.36,2.69-0.54,4.08-0.55c1.38,0.01,2.78,0.19,4.08,0.55c3.11-2.11,4.48-1.67,4.48-1.67c0.89,2.24,0.33,3.9,0.16,4.31\n                    c1.04,1.14,1.67,2.59,1.67,4.37c0,6.26-3.81,7.63-7.44,8.04c0.58,0.5,1.11,1.5,1.11,3.02c0,2.18-0.02,3.93-0.02,4.47\n                    c0,0.44,0.29,0.94,1.12,0.78c6.47-2.16,11.13-8.26,11.13-15.45C32.58,7.29,25.29,0,16.29,0z"/>\n            </svg>\n        </a>\n    </div>\n</div>';
 };
 
 /***/ }),
-/* 11 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -720,7 +756,7 @@ var Input = exports.Input = function Input(keyDownHandler) {
 };
 
 /***/ }),
-/* 12 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -731,14 +767,14 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.List = undefined;
 
-var _card = __webpack_require__(10);
+var _card = __webpack_require__(12);
 
 var List = exports.List = function List(items) {
   return items.map(_card.Card);
 };
 
 /***/ }),
-/* 13 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -752,7 +788,7 @@ var Logo = exports.Logo = function Logo() {
 };
 
 /***/ }),
-/* 14 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -763,9 +799,9 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.InputContainer = undefined;
 
-var _input = __webpack_require__(11);
+var _input = __webpack_require__(13);
 
-var _input2 = __webpack_require__(21);
+var _input2 = __webpack_require__(23);
 
 var _input3 = _interopRequireDefault(_input2);
 
@@ -780,34 +816,6 @@ var InputContainer = exports.InputContainer = function InputContainer(store, act
 };
 
 /***/ }),
-/* 15 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(0)();
-// imports
-
-
-// module
-exports.push([module.i, "* {\n    margin:0;\n    padding:0;\n    box-sizing: border-box;\n}\nbody {\n    background:#f5f5f5;\n    font: 200 100%/1.4 Roboto, \"Helvetica-Neue\", Helvetica, sans-serif; \n}\n.root {\n    padding-top:100px;\n}", ""]);
-
-// exports
-
-
-/***/ }),
-/* 16 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(0)();
-// imports
-
-
-// module
-exports.push([module.i, ".card {\n    box-shadow:0 0 0 1px rgba(0,0,0,.1), 0 2px 3px rgba(0,0,0,.2);\n    background-color:#fff;\n    padding:12px 16px 8px;\n    margin:0 24px 24px 24px;\n}\n.card__title {}\n.card__description {}\n.card__version {}\n.card__tags {}\n.card__links {}\n.card__link {\n    display: inline-block;\n}", ""]);
-
-// exports
-
-
-/***/ }),
 /* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -816,7 +824,7 @@ exports = module.exports = __webpack_require__(0)();
 
 
 // module
-exports.push([module.i, "header {\n    background:rgba(22,22,22, .95);\n    display: flex;\n    padding:24px;\n    position: fixed;\n    top:0;\n    left:0;\n    right:0;\n    will-change: transform;\n    justify-content: space-between; \n}", ""]);
+exports.push([module.i, "* {\n    margin:0;\n    padding:0;\n    box-sizing: border-box;\n}\nbody {\n    background:#f5f5f5;\n    color:#191919;\n    font: 200 100%/1.4 Roboto, \"Helvetica-Neue\", Helvetica, sans-serif; \n}\n.root {\n    padding-top:100px;\n}", ""]);
 
 // exports
 
@@ -830,7 +838,7 @@ exports = module.exports = __webpack_require__(0)();
 
 
 // module
-exports.push([module.i, "input {\n    border:0 none;\n    background:rgba(255, 255, 255, .1);\n    border-bottom: 1px solid rgba(255, 255, 255, .1);\n    margin-left:48px;\n    flex-grow: 1;\n    padding:4px 8px;\n    font-size:1rem;\n    color:#fff;\n    max-width:400px;\n    transition: border-color 120ms ease;\n}\ninput:focus {\n    outline: none;\n    border-bottom-color:rgba(255,255,255,.5);\n}", ""]);
+exports.push([module.i, ".card {\n    box-shadow:0 0 0 1px rgba(0,0,0,.1), 0 2px 3px rgba(0,0,0,.2);\n    background-color:#fff;\n    padding:12px 16px 8px;\n    margin:0 24px 24px 24px;\n}\n.card__blank {\n    width:100%;\n    height:auto;\n}\n.card__title {\n    font-size:1.1rem;\n    margin-bottom: .5rem;\n}\n.card__title-link {\n    text-decoration: none;\n    color:#191919;\n    transition:color 120ms ease;\n}\n.card__title-link:hover {\n    color:blue;\n}\n.card__description {\n    font-size:.9rem;\n    margin-bottom: .25rem;\n}\n.card__version {\n    font-size:.75rem;\n    margin-bottom: .25rem;\n}\n.card__tags-icons {\n    display: inline-block;\n    vertical-align: top;\n}\n.card__tag {\n    display: inline-block;\n    vertical-align: top;\n    font-size:.75rem;\n}\n.card__tag:not(:last-child):after{\n    content:', '\n}\n.card__links {\n    text-align: right;\n}\n.card__link {\n    display: inline-block;\n    margin-left:8px;\n}\n.card__link svg {\n    fill:#191919;\n}\n.card__link:hover svg {\n    fill:blue;\n}", ""]);
 
 // exports
 
@@ -839,10 +847,38 @@ exports.push([module.i, "input {\n    border:0 none;\n    background:rgba(255, 2
 /* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
+exports = module.exports = __webpack_require__(0)();
+// imports
+
+
+// module
+exports.push([module.i, ".header {\n    background:rgba(22,22,22, .95);\n    display: flex;\n    padding:24px;\n    position: fixed;\n    top:0;\n    left:0;\n    right:0;\n    will-change: transform;\n    justify-content: space-between; \n}\n.header__icon {\n    position: fixed;\n    right:30px;\n    top:32px;\n    opacity:.4;\n}\ninput:focus ~ .header__icon {\n    opacity:.8;\n}", ""]);
+
+// exports
+
+
+/***/ }),
+/* 20 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(0)();
+// imports
+
+
+// module
+exports.push([module.i, "input {\n    border:0 none;\n    background:rgba(255, 255, 255, .1);\n    border-bottom: 1px solid rgba(255, 255, 255, .1);\n    margin-left:48px;\n    flex-grow: 1;\n    padding:4px 35px 4px 8px;\n    font-size:1rem;\n    color:#fff;\n    max-width:400px;\n    transition: border-color 120ms ease;\n}\ninput:focus {\n    outline: none;\n    border-bottom-color:rgba(255,255,255,.5);\n}", ""]);
+
+// exports
+
+
+/***/ }),
+/* 21 */
+/***/ (function(module, exports, __webpack_require__) {
+
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(16);
+var content = __webpack_require__(18);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // add the styles to the DOM
 var update = __webpack_require__(1)(content, {});
@@ -862,13 +898,13 @@ if(false) {
 }
 
 /***/ }),
-/* 20 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(17);
+var content = __webpack_require__(19);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // add the styles to the DOM
 var update = __webpack_require__(1)(content, {});
@@ -888,13 +924,13 @@ if(false) {
 }
 
 /***/ }),
-/* 21 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(18);
+var content = __webpack_require__(20);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // add the styles to the DOM
 var update = __webpack_require__(1)(content, {});
@@ -914,7 +950,7 @@ if(false) {
 }
 
 /***/ }),
-/* 22 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -928,17 +964,19 @@ var _api = __webpack_require__(4);
 
 var _api2 = _interopRequireDefault(_api);
 
-var _headerContainer = __webpack_require__(5);
+var _headerContainer = __webpack_require__(6);
 
-var _listContainer = __webpack_require__(6);
+var _listContainer = __webpack_require__(7);
 
-var _createStore = __webpack_require__(8);
+var _blankContainer = __webpack_require__(5);
 
-var _reducers = __webpack_require__(7);
+var _createStore = __webpack_require__(9);
+
+var _reducers = __webpack_require__(8);
 
 var _reducers2 = _interopRequireDefault(_reducers);
 
-var _base = __webpack_require__(9);
+var _base = __webpack_require__(10);
 
 var _base2 = _interopRequireDefault(_base);
 
@@ -949,13 +987,10 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 var store = (0, _createStore.createStore)(_reducers2.default);
 
 var init = function init() {
-    renderHeader();
+    document.querySelector('.root').innerHTML = (0, _headerContainer.HeaderContainer)(store, actions);
+    document.querySelector('.list').innerHTML = (0, _blankContainer.BlankContainer)();
     store.subscribe(renderList);
     (0, _api2.default)(store, actions);
-};
-
-var renderHeader = function renderHeader() {
-    document.querySelector('.root').innerHTML = (0, _headerContainer.HeaderContainer)(store, actions);
 };
 
 var renderList = function renderList() {

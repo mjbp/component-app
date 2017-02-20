@@ -13,7 +13,11 @@ export default function componentReducer(state = initialState, action) {
     var filtered = state.immutableData;
     
     if (searchTerm && searchTerm.trim().length) {
-      filtered = state.immutableData.length ? state.immutableData.filter(item => item.package.name.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1) : []
+      filtered = state.immutableData.length ? state.immutableData.filter(item => {
+          return item.package.name.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1 ||
+            item.package.description.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1 ||
+            item.package.keywords.filter(keyword => keyword.toLowerCase() === searchTerm.toLowerCase()).length;
+      }) : []
     }
 
     return filtered;
