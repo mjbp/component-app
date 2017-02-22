@@ -15,6 +15,8 @@ const init = () => {
     document.querySelector('.list').innerHTML = BlankContainer();
     store.subscribe(renderList);
     API(store, actions);
+
+    if ('serviceWorker' in navigator) window.addEventListener('load', () => navigator.serviceWorker.register('/sw.js'));
 };
 
 const renderList = () => {
