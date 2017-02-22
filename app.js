@@ -1008,7 +1008,7 @@ var init = function init() {
     (0, _api2.default)(store, actions);
 
     if ('serviceWorker' in navigator) window.addEventListener('load', function () {
-        return navigator.serviceWorker.register('/sw.js');
+        return navigator.serviceWorker.register('sw.js');
     });
 };
 
