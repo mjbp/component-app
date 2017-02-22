@@ -441,6 +441,21 @@ Object.defineProperty(exports, "__esModule", {
 var _constants = __webpack_require__(2);
 
 exports.default = function (store, actions) {
+
+    // if ('caches' in window) {
+    //     caches.match(DATA_ENDPOINT)
+    //     .then(response => {
+    //         if (response) {
+    //             response.json()
+    //             .then(data => {
+    //                 // Only update if the XHR is still pending, otherwise the XHR
+    //                 // has already returned and provided the latest data.
+    //                 console.log('updated from cache');
+    //                 store.dispatch(actions.dataLoaded(data.results));
+    //             });
+    //         }
+    //     });
+    // }
     fetch(_constants.DATA_ENDPOINT).then(function (res) {
         return res.json();
     }).then(function (data) {
@@ -991,6 +1006,10 @@ var init = function init() {
     document.querySelector('.list').innerHTML = (0, _blankContainer.BlankContainer)();
     store.subscribe(renderList);
     (0, _api2.default)(store, actions);
+
+    if ('serviceWorker' in navigator) window.addEventListener('load', function () {
+        return navigator.serviceWorker.register('/sw.js');
+    });
 };
 
 var renderList = function renderList() {
