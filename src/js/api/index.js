@@ -17,12 +17,8 @@ export default (store, actions) => {
     //     });
     // }
     fetch(DATA_ENDPOINT)
-    .then(res => {
-        return res.json();
-    })
-    .then(data => {
-        store.dispatch(actions.dataLoaded(data.results));
-    })
+    .then(res => res.json())
+    .then(data => store.dispatch(actions.dataLoaded(data.results)))
     .catch(err => {
         store.dispatch(actions.dataError());
     });

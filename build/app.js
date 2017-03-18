@@ -384,7 +384,7 @@ function updateLink(linkElement, obj) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var DATA_ENDPOINT = exports.DATA_ENDPOINT = 'https://api.npms.io/v2/search?q=stormid+component';
+var DATA_ENDPOINT = exports.DATA_ENDPOINT = 'https://api.npms.io/v2/search?q=stormid+component+not:deprecated';
 
 //actions
 var SEARCH_INPUT_CHANGED = exports.SEARCH_INPUT_CHANGED = 'SEARCH_INPUT_CHANGED';
@@ -459,7 +459,7 @@ exports.default = function (store, actions) {
     fetch(_constants.DATA_ENDPOINT).then(function (res) {
         return res.json();
     }).then(function (data) {
-        store.dispatch(actions.dataLoaded(data.results));
+        return store.dispatch(actions.dataLoaded(data.results));
     }).catch(function (err) {
         store.dispatch(actions.dataError());
     });
