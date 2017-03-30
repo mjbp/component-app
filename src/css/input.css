@@ -9,6 +9,7 @@ input {
     color:#fff;
     max-width:400px;
     transition: border-color 120ms ease;
+    min-width:0;
 }
 input:focus {
     outline: none;

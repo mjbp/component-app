@@ -5,7 +5,8 @@
   "main": "./build",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack && http-server ./build -o",
+    "start": "webpack-dev-server",
+    "serve": "http-server ./build -o",
     "deploy": "gh-pages -d build"
   },
   "author": "mjbp",
@@ -23,8 +24,12 @@
     "webpack": "^2.2.1"
   },
   "dependencies": {
+    "browser-sync": "^2.18.8",
+    "browser-sync-webpack-plugin": "^1.1.4",
     "extract-text-webpack-plugin": "^2.0.0-beta",
     "html-webpack-inline-source-plugin": "^0.0.6",
-    "html-webpack-plugin": "^2.28.0"
+    "html-webpack-plugin": "^2.28.0",
+    "webpack-dashboard": "^0.3.0",
+    "webpack-dev-server": "^2.4.2"
   }
 }
