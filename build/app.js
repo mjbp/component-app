@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "2ca2e3f2b50b20cea75d"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "8e8d8f4f9ebf8e383d9c"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotMainModule = true; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -706,7 +706,7 @@
 /******/ 	__webpack_require__.h = function() { return hotCurrentHash; };
 
 /******/ 	// Load entry module and return exports
-/******/ 	return hotCreateRequire(24)(__webpack_require__.s = 24);
+/******/ 	return hotCreateRequire(29)(__webpack_require__.s = 29);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -1031,6 +1031,7 @@ var DATA_ENDPOINT = exports.DATA_ENDPOINT = 'https://api.npms.io/v2/search?q=sto
 
 //actions
 var SEARCH_INPUT_CHANGED = exports.SEARCH_INPUT_CHANGED = 'SEARCH_INPUT_CHANGED';
+var INFO_CLICKED = exports.INFO_CLICKED = 'INFO_CLICKED';
 var DATA_LOADED = exports.DATA_LOADED = 'DATA_LOADED';
 var DATA_ERROR = exports.DATA_ERROR = 'DATA_ERROR';
 
@@ -1043,7 +1044,7 @@ exports = module.exports = __webpack_require__(0)();
 
 
 // module
-exports.push([module.i, "* {\n    margin:0;\n    padding:0;\n    box-sizing: border-box;\n}\nbody {\n    background:#f5f5f5;\n    color:#191919;\n    font: 200 100%/1.4 Roboto, \"Helvetica-Neue\", Helvetica, sans-serif; \n}\n.root {\n    padding-top:100px;\n}", ""]);
+exports.push([module.i, "* {\n    margin:0;\n    padding:0;\n    box-sizing: border-box;\n}\nbody {\n    background:#f5f5f5;\n    color:#191919;\n    font: 200 100%/1.4 Roboto, \"Helvetica-Neue\", Helvetica, sans-serif; \n}\n.root {\n    padding-top:100px;\n    padding-bottom: 60px;\n}", ""]);
 
 // exports
 
@@ -1057,7 +1058,7 @@ exports = module.exports = __webpack_require__(0)();
 
 
 // module
-exports.push([module.i, ".card {\n    box-shadow:0 0 0 1px rgba(0,0,0,.1), 0 2px 3px rgba(0,0,0,.2);\n    background-color:#fff;\n    padding:12px 16px 8px;\n    margin:0 auto 24px auto;\n    max-width:600px;\n}\n.card__blank {\n    width:100%;\n    height:auto;\n}\n.card__title {\n    font-size:1.1rem;\n    margin-bottom: .5rem;\n}\n.card__title-link {\n    text-decoration: none;\n    color:#191919;\n    transition:color 120ms;\n}\n.card__title-link:hover {\n    color:blue;\n}\n.card__description {\n    font-size:.9rem;\n    margin-bottom: .25rem;\n}\n.card__version {\n    font-size:.75rem;\n    margin-bottom: .25rem;\n}\n.card__tags-icons {\n    display: inline-block;\n    vertical-align: top;\n}\n.card__tag {\n    display: inline-block;\n    vertical-align: top;\n    font-size:.75rem;\n}\n.card__tag:not(:last-child):after{\n    content:', '\n}\n.card__links {\n    text-align: right;\n}\n.card__link {\n    display: inline-block;\n    margin-left:8px;\n}\n.card__link svg {\n    fill:#191919;\n}\n.card__link:hover svg {\n    fill:blue;\n}", ""]);
+exports.push([module.i, ".card {\n    box-shadow:0 0 0 1px rgba(0,0,0,.1), 0 2px 3px rgba(0,0,0,.2);\n    background-color:#fff;\n    padding:12px 16px 8px;\n    margin:0 auto 24px auto;\n    width:96%;\n    max-width:600px;\n}\n.card__blank {\n    width:100%;\n    height:auto;\n}\n.card__title {\n    font-size:1.1rem;\n    margin-bottom: .5rem;\n}\n.card__title-link {\n    text-decoration: none;\n    color:#191919;\n    transition:color 120ms;\n}\n.card__title-link:hover {\n    color:blue;\n}\n.card__description {\n    font-size:.9rem;\n    margin-bottom: .25rem;\n}\n.card__version {\n    font-size:.75rem;\n    margin-bottom: .25rem;\n}\n.card__tags-icons {\n    display: inline-block;\n    vertical-align: top;\n}\n.card__tag {\n    display: inline-block;\n    vertical-align: top;\n    font-size:.75rem;\n}\n.card__tag:not(:last-child):after{\n    content:', '\n}\n.card__links {\n    text-align: right;\n}\n.card__link {\n    display: inline-block;\n    margin-left:8px;\n}\n.card__link svg {\n    fill:#191919;\n}\n.card__link:hover svg {\n    fill:blue;\n}", ""]);
 
 // exports
 
@@ -1085,13 +1086,27 @@ exports = module.exports = __webpack_require__(0)();
 
 
 // module
-exports.push([module.i, "input {\n    border:0 none;\n    background:rgba(255, 255, 255, .1);\n    border-bottom: 1px solid rgba(255, 255, 255, .1);\n    margin-left:48px;\n    flex-grow: 1;\n    padding:4px 35px 4px 8px;\n    font-size:1rem;\n    color:#fff;\n    max-width:400px;\n    transition: border-color 120ms ease;\n    min-width:0;\n}\ninput:focus {\n    outline: none;\n    border-bottom-color:rgba(255,255,255,.5);\n}", ""]);
+exports.push([module.i, ".info__btn {\n    position: fixed;\n    bottom:0;\n    right:0;\n    background:rgba(0,0,0, .05);\n    padding:20px;\n    display: inline-block;\n    cursor: pointer;\n}\n.info__btn:hover {\n    background:rgba(0,0,0, .1);\n}\n.info__btn-icon {\n    display: block;\n}\n.info__close {\n    margin-right:-25px;\n    float:right;\n    display: none;\n    cursor: pointer;\n}\n.info__content {\n    display: none;\n}\n\n.info__content a {\n    color:#fff;\n    text-decoration:underline;\n}\n.info__content.active {\n    display: block;\n    bottom:0;\n    right:0;\n    left:0;\n    position: fixed;\n    z-index:1;\n    padding:24px 48px 24px 24px;\n    background:#191919;\n    color:#fff;\n    text-align: center;\n}\n.info__content.active .info__close {\n    display: inline-block;\n}", ""]);
 
 // exports
 
 
 /***/ }),
 /* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(0)();
+// imports
+
+
+// module
+exports.push([module.i, "input {\n    border:0 none;\n    background:rgba(255, 255, 255, .1);\n    border-bottom: 1px solid rgba(255, 255, 255, .1);\n    margin-left:48px;\n    flex-grow: 1;\n    padding:4px 35px 4px 8px;\n    font-size:1rem;\n    color:#fff;\n    max-width:400px;\n    transition: border-color 120ms ease;\n    min-width:0;\n}\ninput:focus {\n    outline: none;\n    border-bottom-color:rgba(255,255,255,.5);\n}", ""]);
+
+// exports
+
+
+/***/ }),
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1103,6 +1118,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.dataLoaded = dataLoaded;
 exports.dataError = dataError;
 exports.searchTermChanged = searchTermChanged;
+exports.infoClicked = infoClicked;
 
 var _constants = __webpack_require__(2);
 
@@ -1126,8 +1142,14 @@ function searchTermChanged(searchTerm) {
   };
 }
 
+function infoClicked() {
+  return {
+    type: _constants.INFO_CLICKED
+  };
+}
+
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1165,7 +1187,7 @@ exports.default = function (store, actions) {
 };
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1176,38 +1198,12 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.BlankContainer = undefined;
 
-var _blank = __webpack_require__(15);
+var _blank = __webpack_require__(17);
 
 var BlankContainer = exports.BlankContainer = function BlankContainer() {
   return [0, 0, 0, 0].map(function () {
     return '<div class="card">' + (0, _blank.Blank)() + '</div>';
   }).join('');
-};
-
-/***/ }),
-/* 10 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.HeaderContainer = undefined;
-
-var _logo = __webpack_require__(19);
-
-var _inputContainer = __webpack_require__(20);
-
-var _header = __webpack_require__(22);
-
-var _header2 = _interopRequireDefault(_header);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var HeaderContainer = exports.HeaderContainer = function HeaderContainer(store, actions) {
-    return '<header class="header">\n    ' + (0, _logo.Logo)() + (0, _inputContainer.InputContainer)(store, actions) + '\n    <svg class="header__icon" fill="#FFFFFF" height="18" viewBox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg">\n        <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>\n        <path d="M0 0h24v24H0z" fill="none"/>\n    </svg>\n</header>\n<div class="list"></div>';
 };
 
 /***/ }),
@@ -1218,13 +1214,68 @@ var HeaderContainer = exports.HeaderContainer = function HeaderContainer(store, 
 
 
 Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.HeaderContainer = undefined;
+
+var _logo = __webpack_require__(23);
+
+var _inputContainer = __webpack_require__(24);
+
+var _header = __webpack_require__(26);
+
+var _header2 = _interopRequireDefault(_header);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var HeaderContainer = exports.HeaderContainer = function HeaderContainer(store, actions) {
+    return '<header class="header">\n    ' + (0, _logo.Logo)() + (0, _inputContainer.InputContainer)(store, actions) + '\n    <svg class="header__icon" fill="#FFFFFF" height="18" viewBox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg">\n        <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>\n        <path d="M0 0h24v24H0z" fill="none"/>\n    </svg>\n</header>\n<div class="list"></div>\n<div class="info"></div>';
+};
+
+/***/ }),
+/* 12 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.InfoContainer = undefined;
+
+var _infoButton = __webpack_require__(19);
+
+var _infoContent = __webpack_require__(20);
+
+var _info = __webpack_require__(27);
+
+var _info2 = _interopRequireDefault(_info);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var InfoContainer = exports.InfoContainer = function InfoContainer(store, actions) {
+    window.clickHandler = function (e) {
+        store.dispatch(actions.infoClicked());
+    };
+    return '' + (0, _infoButton.InfoButton)('clickHandler') + (0, _infoContent.InfoContent)(store.getState().info ? ' active' : '', !store.getState().info, 'clickHandler');
+};
+
+/***/ }),
+/* 13 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.ListContainer = undefined;
 
-var _list = __webpack_require__(18);
+var _list = __webpack_require__(22);
 
-var _card = __webpack_require__(21);
+var _card = __webpack_require__(25);
 
 var _card2 = _interopRequireDefault(_card);
 
@@ -1235,7 +1286,7 @@ var ListContainer = exports.ListContainer = function ListContainer(store) {
 };
 
 /***/ }),
-/* 12 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1255,6 +1306,7 @@ var initialState = {
   immutableData: [],
   data: [],
   loaded: false,
+  info: false,
   searchTerm: ''
 };
 
@@ -1293,6 +1345,11 @@ function componentReducer() {
         loaded: false
       });
 
+    case _constants.INFO_CLICKED:
+      return _extends({}, state, {
+        info: !state.info
+      });
+
     case _constants.SEARCH_INPUT_CHANGED:
       return _extends({}, state, {
         searchTerm: action.searchTerm,
@@ -1305,7 +1362,7 @@ function componentReducer() {
 }
 
 /***/ }),
-/* 13 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1398,7 +1455,7 @@ var createStore = exports.createStore = function createStore(reducer) {
 };
 
 /***/ }),
-/* 14 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
@@ -1424,7 +1481,7 @@ if(true) {
 }
 
 /***/ }),
-/* 15 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1438,7 +1495,7 @@ var Blank = exports.Blank = function Blank() {
 };
 
 /***/ }),
-/* 16 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1456,7 +1513,35 @@ var Card = exports.Card = function Card(item) {
 };
 
 /***/ }),
-/* 17 */
+/* 19 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+var InfoButton = exports.InfoButton = function InfoButton(clickHandler) {
+    return "<div onclick=\"" + clickHandler + "(this)\" class=\"info__btn\" role=\"button\"><svg class=\"info__btn-icon\" fill='#191919' height=\"24\" viewBox=\"0 0 24 24\" width=\"24\" xmlns=\"http://www.w3.org/2000/svg\">\n    <path d=\"M0 0h24v24H0z\" fill=\"none\"/>\n    <path d=\"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z\"/>\n</svg></div>";
+};
+
+/***/ }),
+/* 20 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+var InfoContent = exports.InfoContent = function InfoContent(className, hidden, clickHandler) {
+    return "<div class=\"info__content" + className + "\" aria-hidden=\"" + hidden + "\">\n    This is a set of <a href=\"//stormid.com\">StormId's</a> accessible UI components published on npm. The full component specification can be viewed in this <a href=\"https://gist.github.com/mjbp/6343de6f7b0e19e7a11e\">gist</a>\n    <svg onclick=\"" + clickHandler + "(this)\" class=\"info__close\" fill=\"#ffffff\" height=\"24\" viewBox=\"0 0 24 24\" width=\"24\" xmlns=\"http://www.w3.org/2000/svg\">\n        <path d=\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\"/>\n        <path d=\"M0 0h24v24H0z\" fill=\"none\"/>\n    </svg>\n</div>";
+};
+
+/***/ }),
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1466,11 +1551,11 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var Input = exports.Input = function Input(keyDownHandler) {
-  return "<input type=\"text\" onkeyup=\"" + keyDownHandler + "(this)\">";
+  return "<input id=\"filter\" type=\"text\" onkeyup=\"" + keyDownHandler + "(this)\" aria-label=\"filter\">";
 };
 
 /***/ }),
-/* 18 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1481,14 +1566,14 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.List = undefined;
 
-var _card = __webpack_require__(16);
+var _card = __webpack_require__(18);
 
 var List = exports.List = function List(items) {
   return items.map(_card.Card);
 };
 
 /***/ }),
-/* 19 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1502,7 +1587,7 @@ var Logo = exports.Logo = function Logo() {
 };
 
 /***/ }),
-/* 20 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1513,9 +1598,9 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.InputContainer = undefined;
 
-var _input = __webpack_require__(17);
+var _input = __webpack_require__(21);
 
-var _input2 = __webpack_require__(23);
+var _input2 = __webpack_require__(28);
 
 var _input3 = _interopRequireDefault(_input2);
 
@@ -1530,7 +1615,7 @@ var InputContainer = exports.InputContainer = function InputContainer(store, act
 };
 
 /***/ }),
-/* 21 */
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
@@ -1556,7 +1641,7 @@ if(true) {
 }
 
 /***/ }),
-/* 22 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
@@ -1582,7 +1667,7 @@ if(true) {
 }
 
 /***/ }),
-/* 23 */
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
@@ -1608,33 +1693,61 @@ if(true) {
 }
 
 /***/ }),
-/* 24 */
+/* 28 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(7);
+if(typeof content === 'string') content = [[module.i, content, '']];
+// add the styles to the DOM
+var update = __webpack_require__(1)(content, {});
+if(content.locals) module.exports = content.locals;
+// Hot Module Replacement
+if(true) {
+	// When the styles change, update the <style> tags
+	if(!content.locals) {
+		module.hot.accept(7, function() {
+			var newContent = __webpack_require__(7);
+			if(typeof newContent === 'string') newContent = [[module.i, newContent, '']];
+			update(newContent);
+		});
+	}
+	// When the module is disposed, remove the <style> tags
+	module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _actions = __webpack_require__(7);
+var _actions = __webpack_require__(8);
 
 var actions = _interopRequireWildcard(_actions);
 
-var _api = __webpack_require__(8);
+var _api = __webpack_require__(9);
 
 var _api2 = _interopRequireDefault(_api);
 
-var _headerContainer = __webpack_require__(10);
+var _headerContainer = __webpack_require__(11);
 
-var _listContainer = __webpack_require__(11);
+var _listContainer = __webpack_require__(13);
 
-var _blankContainer = __webpack_require__(9);
+var _infoContainer = __webpack_require__(12);
 
-var _createStore = __webpack_require__(13);
+var _blankContainer = __webpack_require__(10);
 
-var _reducers = __webpack_require__(12);
+var _createStore = __webpack_require__(15);
+
+var _reducers = __webpack_require__(14);
 
 var _reducers2 = _interopRequireDefault(_reducers);
 
-var _base = __webpack_require__(14);
+var _base = __webpack_require__(16);
 
 var _base2 = _interopRequireDefault(_base);
 
@@ -1648,6 +1761,7 @@ var init = function init() {
     document.querySelector('.root').innerHTML = (0, _headerContainer.HeaderContainer)(store, actions);
     document.querySelector('.list').innerHTML = (0, _blankContainer.BlankContainer)();
     store.subscribe(renderList);
+    store.subscribe(renderInfo);
     (0, _api2.default)(store, actions);
 
     if ('serviceWorker' in navigator) window.addEventListener('load', function () {
@@ -1657,6 +1771,10 @@ var init = function init() {
 
 var renderList = function renderList() {
     document.querySelector('.list').innerHTML = (0, _listContainer.ListContainer)(store);
+};
+
+var renderInfo = function renderInfo() {
+    document.querySelector('.info').innerHTML = (0, _infoContainer.InfoContainer)(store, actions);
 };
 
 window.addEventListener('DOMContentLoaded', init);

@@ -1,1 +1,1 @@
-export const Input = keyDownHandler => `<input type="text" onkeyup="${keyDownHandler}(this)">`;
+export const Input = keyDownHandler => `<input id="filter" type="text" onkeyup="${keyDownHandler}(this)" aria-label="filter">`;

@@ -7,5 +7,5 @@ export const InfoContainer = (store, actions) => {
     window.clickHandler = e => {
         store.dispatch(actions.infoClicked());
     };
-    return  `${InfoButton('clickHandler')}${InfoContent(store.getState().info ? ' active' : '', 'clickHandler')}`;
+    return  `${InfoButton('clickHandler')}${InfoContent(store.getState().info ? ' active' : '', !store.getState().info, 'clickHandler')}`;
 }

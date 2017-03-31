@@ -1,3 +1,5 @@
 node_modules/
 *.log
 *.hot-update.*
+*.report.*
+.DS_Store

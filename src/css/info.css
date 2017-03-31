@@ -20,13 +20,7 @@
     cursor: pointer;
 }
 .info__content {
-    position: fixed;
-    z-index:1;
-    padding:24px 48px 24px 24px;
-    background:#191919;
-    color:#fff;
-    top:100%;
-    text-align: center;
+    display: none;
 }
 
 .info__content a {
@@ -34,10 +28,16 @@
     text-decoration:underline;
 }
 .info__content.active {
-    top:auto;
+    display: block;
     bottom:0;
     right:0;
     left:0;
+    position: fixed;
+    z-index:1;
+    padding:24px 48px 24px 24px;
+    background:#191919;
+    color:#fff;
+    text-align: center;
 }
 .info__content.active .info__close {
     display: inline-block;
