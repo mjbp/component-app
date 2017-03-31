@@ -1,0 +1,44 @@
+.info__btn {
+    position: fixed;
+    bottom:0;
+    right:0;
+    background:rgba(0,0,0, .05);
+    padding:20px;
+    display: inline-block;
+    cursor: pointer;
+}
+.info__btn:hover {
+    background:rgba(0,0,0, .1);
+}
+.info__btn-icon {
+    display: block;
+}
+.info__close {
+    margin-right:-25px;
+    float:right;
+    display: none;
+    cursor: pointer;
+}
+.info__content {
+    position: fixed;
+    z-index:1;
+    padding:24px 48px 24px 24px;
+    background:#191919;
+    color:#fff;
+    top:100%;
+    text-align: center;
+}
+
+.info__content a {
+    color:#fff;
+    text-decoration:underline;
+}
+.info__content.active {
+    top:auto;
+    bottom:0;
+    right:0;
+    left:0;
+}
+.info__content.active .info__close {
+    display: inline-block;
+}

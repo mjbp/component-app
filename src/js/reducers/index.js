@@ -1,9 +1,10 @@
-import { SEARCH_INPUT_CHANGED, DATA_ERROR, DATA_LOADED } from '../constants';
+import { SEARCH_INPUT_CHANGED, DATA_ERROR, DATA_LOADED, INFO_CLICKED } from '../constants';
 
 const initialState = {
   immutableData: [],
   data : [],
   loaded: false,
+  info: false,
   searchTerm : ''
 };
 
@@ -36,6 +37,12 @@ export default function componentReducer(state = initialState, action) {
     return {
       ...state,
       loaded: false
+    };
+
+  case INFO_CLICKED:
+    return {
+      ...state,
+      info: !state.info
     };
 
   case SEARCH_INPUT_CHANGED:

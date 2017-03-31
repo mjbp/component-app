@@ -10,4 +10,5 @@ export const HeaderContainer = (store, actions) => `<header class="header">
         <path d="M0 0h24v24H0z" fill="none"/>
     </svg>
 </header>
-<div class="list"></div>`;
+<div class="list"></div>
+<div class="info"></div>`;
