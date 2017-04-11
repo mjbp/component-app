@@ -1,10 +1,10 @@
-#Storm component list
+# Storm component list
 
 A PWA to list the UI components published to npm by StormId.
 
 The app has a minimal vanilla compositional, functional UI on top of a redux store.
 
-##How to run
+## How to run
 ```
 yarn install
 ```
