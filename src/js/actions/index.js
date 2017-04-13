@@ -1,6 +1,7 @@
 import { SEARCH_INPUT_CHANGED, DATA_ERROR, DATA_LOADED, INFO_CLICKED } from '../constants'; 
 
 export function dataLoaded(data) {
+  
   return {
     type: DATA_LOADED,
     data

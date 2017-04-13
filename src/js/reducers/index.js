@@ -9,7 +9,6 @@ const initialState = {
 };
 
 export default function componentReducer(state = initialState, action) {
-
   var doFilter = (searchTerm=state.searchTerm) => {
     var filtered = state.immutableData;
     

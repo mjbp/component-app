@@ -1,4 +1,4 @@
-export const DATA_ENDPOINT = 'https://api.npms.io/v2/search?q=stormid+component+not:deprecated';
+export const DATA_ENDPOINT = 'https://api.npms.io/v2/search?q=stormid+component+not:deprecated&size=250';
 
 //actions
 export const SEARCH_INPUT_CHANGED = 'SEARCH_INPUT_CHANGED';
