@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "8e8d8f4f9ebf8e383d9c"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "8f18d8407c761f7ece00"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotMainModule = true; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -1027,7 +1027,7 @@ function updateLink(linkElement, obj) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var DATA_ENDPOINT = exports.DATA_ENDPOINT = 'https://api.npms.io/v2/search?q=stormid+component+not:deprecated';
+var DATA_ENDPOINT = exports.DATA_ENDPOINT = 'https://api.npms.io/v2/search?q=stormid+component+not:deprecated&size=250';
 
 //actions
 var SEARCH_INPUT_CHANGED = exports.SEARCH_INPUT_CHANGED = 'SEARCH_INPUT_CHANGED';
@@ -1123,6 +1123,7 @@ exports.infoClicked = infoClicked;
 var _constants = __webpack_require__(2);
 
 function dataLoaded(data) {
+
   return {
     type: _constants.DATA_LOADED,
     data: data
@@ -1313,7 +1314,6 @@ var initialState = {
 function componentReducer() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
   var action = arguments[1];
-
 
   var doFilter = function doFilter() {
     var searchTerm = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : state.searchTerm;

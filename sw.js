@@ -1,6 +1,4 @@
-var CACHE_NAME = 'component-app';
-// var DATA_CACHE_NAME = 'component-app-data';
-// var DATA_URL = 'https://api.npms.io/v2/search?q=stormid+component';
+var CACHE_NAME = 'edinburgh-parks';
 
 self.addEventListener('install', function(event) {
   event.waitUntil(
@@ -8,7 +6,10 @@ self.addEventListener('install', function(event) {
       .then(function(cache) {
         console.log('[Service Worker] Opened cache');
         return cache.addAll([
-          'index.html'
+          'index.html',
+          'data.json',
+          'app.css',
+          'img/park.svg'
         ]);
       })
   );
