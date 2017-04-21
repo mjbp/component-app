@@ -1,4 +1,4 @@
-var CACHE_NAME = 'edinburgh-parks';
+var CACHE_NAME = 'component-app';
 
 self.addEventListener('install', function(event) {
   event.waitUntil(
@@ -6,10 +6,7 @@ self.addEventListener('install', function(event) {
       .then(function(cache) {
         console.log('[Service Worker] Opened cache');
         return cache.addAll([
-          'index.html',
-          'data.json',
-          'app.css',
-          'img/park.svg'
+          'index.html'
         ]);
       })
   );
