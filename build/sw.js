@@ -13,19 +13,25 @@ self.addEventListener('install', function(event) {
 });
 
 self.addEventListener('fetch', function(event) {
-  event.respondWith(
-    caches.open(CACHE_NAME).then(function(cache) {
-      return cache.match(event.request).then(function(response) {
-        var fetchPromise = fetch(event.request)
-          .then(function(networkResponse) {
-            cache.put(event.request, networkResponse.clone());
-            return networkResponse;
-          })
-          .catch(err => {
-              console.log('[Service Worker] Can\'t update cache from network');
-          });
-          return response || fetchPromise;
-        })
-    })
-  );
+  console.log(event);
+  event.respondWith(fromCache(event.request));
+  event.waitUntil(updateCache(event.request));
 });
+
+function fromCache(req){
+  console.log('[Service Worker] From cache');
+  return caches.open(CACHE_NAME).then(function (cache) {
+    return cache.match(req).then(function (matching) {
+      return matching || Promise.reject('no-match');
+    });
+  });
+}
+
+function updateCache(req){
+  console.log('[Service Worker] Updating cache');
+  return caches.open(CACHE_NAME).then(function (cache) {
+    return fetch(req).then(function (res) {
+      return cache.put(req, res);
+    });
+  });
+}
